@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 
 app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes
+
 model = ChatGoogleGenerativeAI(google_api_key="AIzaSyA1aRoJIbD5zPt0kEZCugKNtTvCjG7QJpM", model="gemini-1.5-flash")
 
 chat_history = []
